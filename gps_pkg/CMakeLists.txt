@@ -229,7 +229,7 @@ include_directories(
 #  ${catkin_LIBRARIES}
 # ) 旧东西
 
-add_executable(gnss_node2 src/gnss_node2.cpp)
+add_executable(gnss_node2 src/gnss_node2gai.cpp)
 target_link_libraries(gnss_node2
   ${catkin_LIBRARIES}
  )
