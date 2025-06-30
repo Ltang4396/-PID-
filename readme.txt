@@ -1,19 +1,12 @@
-pid最初版为使用txt文件类型输出
+本项目采用了PID控制车辆油门开度，使得其能够达到目标车速
 
-pid第二版为使用csv文件类型输出，方便在excel上面画图
-同时新增内容如下：
-1.增加了误差死区控制，在error较小时不改变油门开度
-📌 作用：
-防止高频抖动（例如目标 2.00 m/s，当前 1.96 m/s，控制器不断小幅调节油门）；
-减少不必要的油门控制命令，提高系统稳定性；
-提升舒适性和系统寿命（不频繁调节）；
+该项目主要通过两部分完成：
+1.通过gps_pkg文件夹下的gnss_node2gai.cpp文件，输出当前车辆的车速(通过“pose_velocity”话题发布，消息类型为geometry_msgs::Pose2D，其中的Pose2D.theta对应车辆行进车速)。
+2.通过wired_control文件夹下的pid_throttle_control2.cpp文件，其根据我们输入的目标车速，以及车辆的当前车速，根据PID算法输出对应的油门开度，将油门开度转换成CAN协议的格式输送给CAN。
 
-2.新增死区补偿，由于在我们的实车中油门开度在15%以下是不工作的，因此跳过此阶段
-📌 作用：
-保证车辆能从静止启动；
-避免“油门有了但车不动”的假象；
-提高低速响应性能，减少起步滞后；
-
-3.对于生成csv文件由于名字一样导致覆盖或者增添的问题，采用根据PID三个参数进行csv文件的命名，其既可以看得到参数的变化，又避免了覆盖的问题
-
-展望:对于不同的目标车速，对应的PID参数可能需要进一步调节，可以在对各个速度进行实车泡好参数后通过if else 语句对PID的参数进行切换
+运行代码顺序如下(进入文件夹以及source ./devel/setup.bash的步骤在此不说明)：
+1.roscore
+2.rosrun gps_pkg gnss_node2gai
+3.rosrun wired_control pcan_usb
+4.rosrun wired_control mode_set_gai  0 0 0 1 0  (此处只是我们实验室的车如此，具体见mode_set_gai代码)
+5.rosrun wired_control pid_throttlec_control2 x (x 对应目标车速，在本项目中只试验了车速为2m/s时候的情况)
