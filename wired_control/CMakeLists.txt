@@ -225,7 +225,7 @@ add_executable(pcan_usb src/pcan_usb.cpp)
 add_dependencies(pcan_usb ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(pcan_usb pcandevice ${catkin_LIBRARIES})
 
-add_executable(mode_set src/mode_set.cpp)
+add_executable(mode_set src/mode_set_gai.cpp)
 add_dependencies(mode_set ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(mode_set pcandevice ${catkin_LIBRARIES})
 
