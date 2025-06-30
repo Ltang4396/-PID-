@@ -89,7 +89,7 @@ void velocityCallback(const geometry_msgs::Pose2D::ConstPtr& msg) {
 }
 
 int main(int argc, char **argv) {
-    ros::init(argc, argv, "pid_speed_control");
+    ros::init(argc, argv, "pid_speed_control2");
     setlocale(LC_ALL, "");
 
     if (argc != 2) {
