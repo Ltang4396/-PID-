@@ -1,0 +1,4 @@
+<launch>
+    <!-- 启动脚本，生成单窗口多标签页 -->
+    <node pkg="gps_pkg" type="gps_QSK.sh" name="gps_terminal" />
+</launch>
