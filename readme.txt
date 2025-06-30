@@ -10,3 +10,6 @@
 3.rosrun wired_control pcan_usb
 4.rosrun wired_control mode_set_gai  0 0 0 1 0  (此处只是我们实验室的车如此，具体见mode_set_gai代码)
 5.rosrun wired_control pid_throttlec_control2 x (x 对应目标车速，在本项目中只试验了车速为2m/s时候的情况)
+
+补充说明：
+其中的部分CMakeLists文件可能会报错，因为后续没从实车的代码中将CMakeLists文件拷贝回来
