@@ -1,6 +1,6 @@
-pid最初版为使用txt文件类型输出
+pid_throttle_control.cpp为使用txt文件类型输出
 
-pid第二版为使用csv文件类型输出，方便在excel上面画图
+pid_throttle_control2.cpp为使用csv文件类型输出，方便在excel上面画图
 同时新增内容如下：
 1.增加了误差死区控制，在error较小时不改变油门开度
 📌 作用：
