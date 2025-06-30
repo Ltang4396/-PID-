@@ -228,3 +228,11 @@ target_link_libraries(pcan_usb pcandevice ${catkin_LIBRARIES})
 add_executable(mode_set src/mode_set.cpp)
 add_dependencies(mode_set ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(mode_set pcandevice ${catkin_LIBRARIES})
+
+add_executable(pid_throttle_control src/pid_throttle_control.cpp)
+add_dependencies(pid_throttle_control ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(pid_throttle_control pcandevice ${catkin_LIBRARIES})
+
+add_executable(pid_throttle_control2 src/pid_throttle_control2.cpp)
+add_dependencies(pid_throttle_control2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(pid_throttle_control2 pcandevice ${catkin_LIBRARIES})
